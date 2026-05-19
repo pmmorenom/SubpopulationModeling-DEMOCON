@@ -1,1 +1,21 @@
-# SubpopulationSpecificModeling-DEMOCON
+# Repository for "Subpopulation-Specific Modeling for Predicting Dropout and Success: Improving Accuracy and Fairness in Online Courses"
+
+This repository contains the code and tool presented in the paper "Subpopulation-Specific Modeling for Predicting Dropout and Success: Improving Accuracy and Fairness in Online Courses", published at the 2026 IEEE DEMOcon Digital Education and MOOCs Conference (DEMOCON 2026). This code was implemented by Laura Segura Mayordomo.
+
+This work was supported by FEDER / Ministerio de Ciencia, Innovación y Universidades - Agencia Estatal de Investigación through the grant PID2023-146692OB-C31 (GENIE Learn project) funded by MICIU/AEI/10.13039/501100011033 and by ERDF/UE. Moreover, it received support from the UNESCO Chair of “Scalable Digital Education for All” at UC3M and by the grant RED2022-134284-T funded by MICIU/AEI/10.13039/501100011033.
+
+## Description of the variables
+To conduct the analyses, a set of variables derived from the data have been used. The full list of variables is presented in the table below. These variables are categorized in six groups. The first group includes demographics variables, which are used for the subpopulation models used in this paper. The second group includes variables related to the enrollment of the courses, dates, and the number of credits the students are taking. The third category indicates the performance of the course in the different tasks and overall grades, and the number of previous times the student has taken the course. The fourth category includes the total number of clicks in the VLE, the mean number of clicks considering the days the student has interacted, all days of the courses, and the total number of clicks per activity type. The fifth category includes variables to identify the course length (in days) and binary variables to indicate the specific course and edition (if data is related to course AAA in edition 2013B, code_module_AAA and code_presentation_2013B are 1 and the rest are 0). Finally, the last category contains binary variables to represent the region of the student
+
+Among these variables, it is noteworthy that the dependent variables (which are only used to predict) are result_stays and result_aprueba. The first one is a binary variable that indicates whether or not the student finishes the course. Thus grades Pass, Distinction and Fail are coded as 1, and Withdrawn is coded as 0. For the second variable, pass and fail states are treated separately. Thus, Pass and Distinction are encoded as 1, and Fail is coded as 0. 
+
+Finally, regarding the temporal evolution of the data, variables are computed for each time frame of 15 days (indicated in variable Date). Thus, there are 18 rows for each student as most of the courses last between 261-275 days. Nevertheless, it is important to note that when a student drops the course, the variables are preserved from the week they drop to end (e.g., if the student drops out in week 2, variables in week 3 have the same value as in week 2, and so on).
+
+| Category | Variables |
+| :--- | :--- |
+| **Demographics** | gender, highest_education, imd_band, age_band, disability |
+| **Enrollment** | date_registration, studied_credits, Date |
+| **Performance** | mean_score, continuous_grade, exam_grade, final_grade, result_stays, result_aprueba, num_of_prev_attempts. |
+| **VLE Interactions** | total_clicks, mean_clicks, mean_clicks_per_day, clicks_from_dataplus, clicks_from_forumng, clicks_from_homepage, clicks_from_oucontent, clicks_from_resource, clicks_from_subpage, clicks_from_url, clicks_from_ouwiki, clicks_from_quiz, clicks_from_glossary, clicks_from_questionnaire. |
+| **Module & Term** | module_presentation_length, code_module_AAA, code_module_BBB, code_module_CCC, code_module_DDD, code_module_EEE, code_module_FFF, code_module_GGG, code_presentation_2013B, code_presentation_2013J, code_presentation_2014B, code_presentation_2014J. |
+| **Regional Data** | region_East Anglian Region, region_East Midlands Region, region_Ireland, region_London Region, region_North Region, region_North Western Region, region_Scotland, region_South East Region, region_South Region, region_South West Region, region_Wales, region_West Midlands Region, region_Yorkshire Region. |
